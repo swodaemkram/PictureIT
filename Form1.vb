@@ -4,11 +4,15 @@ Imports System.Text
 Imports System.Net
 
 Public Module Module1
-    Public MouzeX As Integer
-    Public MouzeY As Integer
+
+    Public MouzeX As Integer = 0
+    Public MouzeY As Integer = 0
     Public EditMode As Boolean = False
     Public LINE_COUNT As Integer = 0
     Public ADD_NEW_RECORD As Boolean = False
+    Public FILE_NAME As String = ""
+    Public NETWORK_MAP As String = ""
+
 
 End Module
 
@@ -26,45 +30,6 @@ Public Class Form1
         Form2.Height = Me.Height - 300 : Form2.Width = Me.Width - 50
         Form2.WindowState = 1
         Form2.Show()
-
-
-        'Lets Load the Database *******************************************************************
-        Dim FILE_NAME As String = Application.StartupPath & "\PictureIT.cfg"
-
-        Dim TextLine As String = ""
-        If System.IO.File.Exists(FILE_NAME) = True Then
-            Dim objReader As New System.IO.StreamReader(FILE_NAME)
-
-            LINE_COUNT = Form3.DataGridView1.Rows.Add()
-
-            Do While objReader.Peek() <> -1
-
-                TextLine = objReader.ReadLine()
-                LINE_COUNT = Form3.DataGridView1.Rows.Add() - 1
-                Dim LinkName As String = ""
-                Dim Link1_Location As String = ""
-                Dim Link2_Location As String = ""
-                Dim IP_Address_Link1 As String = ""
-                Dim IP_Address_Link2 As String = ""
-                Dim The_DATA As String() = TextLine.Split(",")
-
-                Form3.DataGridView1.Rows.Item(LINE_COUNT).Cells(0).Value = The_DATA(0)
-                Form3.DataGridView1.Rows.Item(LINE_COUNT).Cells(1).Value = The_DATA(1)
-                Form3.DataGridView1.Rows.Item(LINE_COUNT).Cells(2).Value = The_DATA(2)
-                Form3.DataGridView1.Rows.Item(LINE_COUNT).Cells(3).Value = The_DATA(3)
-                Form3.DataGridView1.Rows.Item(LINE_COUNT).Cells(4).Value = The_DATA(4)
-
-                LINE_COUNT = LINE_COUNT + 1
-            Loop
-
-            objReader.Close()
-
-        End If
-        'Done Loading The Database *****************************************************************
-
-
-
-
 
 
     End Sub
@@ -87,8 +52,11 @@ Public Class Form1
 
     Private Sub SaveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaveToolStripMenuItem.Click
 
+        'Using sw As System.IO.StreamWriter = New System.IO.StreamWriter(Application.StartupPath & "\PictureIT.cfg")
 
-        Using sw As System.IO.StreamWriter = New System.IO.StreamWriter(Application.StartupPath & "\PictureIT.cfg")
+        Using sw As System.IO.StreamWriter = New System.IO.StreamWriter(FILE_NAME)
+
+            sw.Write(NETWORK_MAP & vbLf)
 
             For t = 0 To 256
 
@@ -139,4 +107,61 @@ CLOSEIT:
     Private Sub DeleteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteToolStripMenuItem.Click
 
     End Sub
+
+    Private Sub LoadNetworkToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LoadNetworkToolStripMenuItem.Click
+
+        Form2.Timer1.Enabled = False
+
+        Form3.DataGridView1.Rows.Clear()
+        ' Form3.DataGridView1.Columns.Clear()
+
+        Me.OpenFileDialog1.ShowDialog()
+
+        'Lets Load the Database *******************************************************************
+
+        FILE_NAME = Me.OpenFileDialog1.FileName
+
+        Dim TextLine As String = ""
+        If System.IO.File.Exists(FILE_NAME) = True Then
+            Dim objReader As New System.IO.StreamReader(FILE_NAME)
+
+            TextLine = objReader.ReadLine()
+            NETWORK_MAP = TextLine
+            Form2.BackgroundImage = New System.Drawing.Bitmap(TextLine)
+
+            LINE_COUNT = Form3.DataGridView1.Rows.Add()
+
+            Do While objReader.Peek() <> -1
+
+                TextLine = objReader.ReadLine()
+
+                LINE_COUNT = Form3.DataGridView1.Rows.Add() - 1
+
+                Dim LinkName As String = ""
+                Dim Link1_Location As String = ""
+                Dim Link2_Location As String = ""
+                Dim IP_Address_Link1 As String = ""
+                Dim IP_Address_Link2 As String = ""
+                Dim The_DATA As String() = TextLine.Split(",")
+
+                Form3.DataGridView1.Rows.Item(LINE_COUNT).Cells(0).Value = The_DATA(0)
+                Form3.DataGridView1.Rows.Item(LINE_COUNT).Cells(1).Value = The_DATA(1)
+                Form3.DataGridView1.Rows.Item(LINE_COUNT).Cells(2).Value = The_DATA(2)
+                Form3.DataGridView1.Rows.Item(LINE_COUNT).Cells(3).Value = The_DATA(3)
+                Form3.DataGridView1.Rows.Item(LINE_COUNT).Cells(4).Value = The_DATA(4)
+
+                LINE_COUNT = LINE_COUNT + 1
+            Loop
+
+            objReader.Close()
+
+
+
+        End If
+        'Done Loading The Database *****************************************************************
+        Form2.Timer1.Enabled = True
+
+    End Sub
+
+
 End Class

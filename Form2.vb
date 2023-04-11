@@ -57,10 +57,8 @@ Public Class Form2
         Dim POINT12 As String = ""
         Dim POINT34 As String = ""
 
-
+        ' For t = 0 To LINE_COUNT - 1
         For t = 0 To LINE_COUNT - 1
-
-
             Dim PATH_QUALITY As Integer = Form3.DataGridView1.Rows(t).Cells(1).Value
 
             POINT12 = Form3.DataGridView1.Rows(t).Cells(1).Value
@@ -68,16 +66,15 @@ Public Class Form2
             POINT34 = Form3.DataGridView1.Rows(t).Cells(2).Value
             Dim SECOND_POINT As String() = POINT34.Split(".")
 
-
             Dim myPen As New System.Drawing.Pen(System.Drawing.Color.Red, 5)
+
+
+
             Dim formGraphics As System.Drawing.Graphics
             formGraphics = Me.CreateGraphics()
-            'formGraphics.DrawLine(myPen, 0, 0, 200, 200)
             formGraphics.DrawLine(myPen, Convert.ToInt32(FIRST_POINT(0)), Convert.ToInt32(FIRST_POINT(1)), Convert.ToInt32(SECOND_POINT(0)), Convert.ToInt32(SECOND_POINT(1)))
             myPen.Dispose()
             formGraphics.Dispose()
-
-
 
         Next t
 

@@ -30,11 +30,13 @@ Partial Class Form1
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LoadNetworkToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EditToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DeleteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -82,41 +84,51 @@ Partial Class Form1
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditToolStripMenuItem, Me.AddToolStripMenuItem, Me.DeleteToolStripMenuItem, Me.SaveToolStripMenuItem, Me.ExitToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoadNetworkToolStripMenuItem, Me.EditToolStripMenuItem, Me.AddToolStripMenuItem, Me.DeleteToolStripMenuItem, Me.SaveToolStripMenuItem, Me.ExitToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "File"
         '
+        'LoadNetworkToolStripMenuItem
+        '
+        Me.LoadNetworkToolStripMenuItem.Name = "LoadNetworkToolStripMenuItem"
+        Me.LoadNetworkToolStripMenuItem.Size = New System.Drawing.Size(148, 22)
+        Me.LoadNetworkToolStripMenuItem.Text = "Load Network"
+        '
         'EditToolStripMenuItem
         '
         Me.EditToolStripMenuItem.Name = "EditToolStripMenuItem"
-        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(107, 22)
+        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(148, 22)
         Me.EditToolStripMenuItem.Text = "Edit"
         '
         'AddToolStripMenuItem
         '
         Me.AddToolStripMenuItem.Name = "AddToolStripMenuItem"
-        Me.AddToolStripMenuItem.Size = New System.Drawing.Size(107, 22)
+        Me.AddToolStripMenuItem.Size = New System.Drawing.Size(148, 22)
         Me.AddToolStripMenuItem.Text = "Add"
         '
         'DeleteToolStripMenuItem
         '
         Me.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem"
-        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(107, 22)
+        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(148, 22)
         Me.DeleteToolStripMenuItem.Text = "Delete"
         '
         'SaveToolStripMenuItem
         '
         Me.SaveToolStripMenuItem.Enabled = False
         Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
-        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(107, 22)
+        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(148, 22)
         Me.SaveToolStripMenuItem.Text = "Save"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(107, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(148, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
+        '
+        'OpenFileDialog1
+        '
+        Me.OpenFileDialog1.Filter = "Picture I.T. File|*.pin"
         '
         'Form1
         '
@@ -151,4 +163,6 @@ Partial Class Form1
     Friend WithEvents SaveToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripStatusLabel2 As ToolStripStatusLabel
+    Friend WithEvents LoadNetworkToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents OpenFileDialog1 As OpenFileDialog
 End Class
