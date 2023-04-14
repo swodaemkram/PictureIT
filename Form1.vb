@@ -155,6 +155,7 @@ CLOSEIT:
 
             objReader.Close()
 
+            Me.StartTestingToolStripMenuItem.Enabled = True
 
 
         End If
@@ -163,5 +164,25 @@ CLOSEIT:
 
     End Sub
 
+    Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) 
 
+
+
+    End Sub
+
+    Private Sub StartTestingToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles StartTestingToolStripMenuItem.Click
+        Form3.BackgroundWorker1.RunWorkerAsync()
+        Me.StopTestingToolStripMenuItem.Enabled = True
+        Me.StartTestingToolStripMenuItem.Enabled = False
+    End Sub
+
+    Private Sub StopTestingToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles StopTestingToolStripMenuItem.Click
+        Form3.BackgroundWorker1.CancelAsync()
+        Me.StopTestingToolStripMenuItem.Enabled = False
+        Me.StartTestingToolStripMenuItem.Enabled = True
+    End Sub
+
+    Private Sub ToolStripStatusLabel3_Click(sender As Object, e As EventArgs) 
+
+    End Sub
 End Class
