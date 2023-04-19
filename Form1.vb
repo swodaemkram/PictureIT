@@ -12,7 +12,7 @@ Public Module Module1
     Public ADD_NEW_RECORD As Boolean = False
     Public FILE_NAME As String = ""
     Public NETWORK_MAP As String = ""
-
+    Public NEW_MAP As String = ""
 
 End Module
 
@@ -54,6 +54,10 @@ Public Class Form1
 
         'Using sw As System.IO.StreamWriter = New System.IO.StreamWriter(Application.StartupPath & "\PictureIT.cfg")
 
+        Me.SaveFileDialog1.Filter = "Picture I.T. File|*.pin"
+        Me.SaveFileDialog1.ShowDialog()
+        FILE_NAME = Me.SaveFileDialog1.FileName
+
         Using sw As System.IO.StreamWriter = New System.IO.StreamWriter(FILE_NAME)
 
             sw.Write(NETWORK_MAP & vbLf)
@@ -78,7 +82,7 @@ CLOSEIT:
         SaveToolStripMenuItem.Enabled = False
         If ADD_NEW_RECORD = True Then LINE_COUNT = LINE_COUNT + 1 : ADD_NEW_RECORD = False
         Form2.Timer1.Enabled = True
-
+        Me.SaveToolStripMenuItem.Enabled = False
     End Sub
 
     Private Sub AddToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddToolStripMenuItem.Click
@@ -109,6 +113,8 @@ CLOSEIT:
     End Sub
 
     Private Sub LoadNetworkToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LoadNetworkToolStripMenuItem.Click
+
+        Me.OpenFileDialog1.Filter = "Picture I.T. File|*.pin"
 
         Form2.Timer1.Enabled = False
 
@@ -183,6 +189,22 @@ CLOSEIT:
     End Sub
 
     Private Sub ToolStripStatusLabel3_Click(sender As Object, e As EventArgs) 
+
+    End Sub
+
+    Private Sub CeateNewNetworkToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CeateNewNetworkToolStripMenuItem.Click
+
+        EditMode = True
+        Form3.DataGridView1.Rows.Clear()
+        Me.SaveToolStripMenuItem.Enabled = True
+        Me.OpenFileDialog1.Filter = "Picture File|*.jpg"
+        Me.OpenFileDialog1.ShowDialog()
+        NETWORK_MAP = Me.OpenFileDialog1.FileName
+        Form2.BackgroundImage = New System.Drawing.Bitmap(NETWORK_MAP)
+        Form3.DataGridView1.ReadOnly = False
+
+
+
 
     End Sub
 End Class

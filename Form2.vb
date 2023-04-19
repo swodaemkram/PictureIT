@@ -56,6 +56,10 @@ Public Class Form2
         Dim POINT4 As Integer = 0
         Dim POINT12 As String = ""
         Dim POINT34 As String = ""
+        Dim RColor As Integer = 0
+        Dim GColor As Integer = 0
+        Dim BColor As Integer = 0
+        Dim PingDelay As Integer = 0
 
         ' For t = 0 To LINE_COUNT - 1
         For t = 0 To LINE_COUNT - 1
@@ -66,8 +70,11 @@ Public Class Form2
             POINT34 = Form3.DataGridView1.Rows(t).Cells(2).Value
             Dim SECOND_POINT As String() = POINT34.Split(".")
 
-            Dim myPen As New System.Drawing.Pen(System.Drawing.Color.Red, 5)
+            PingDelay = Form3.DataGridView1.Rows(t).Cells(6).Value
 
+            If PingDelay = 0 Then RColor = 250 : GColor = 0 : BColor = 0
+            If PingDelay > 0 Then GColor = 150
+            Dim myPen As New System.Drawing.Pen(System.Drawing.Color.FromArgb(RColor, GColor, BColor), 5)
 
 
             Dim formGraphics As System.Drawing.Graphics

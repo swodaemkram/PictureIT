@@ -12,27 +12,41 @@
     End Sub
 
     Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
+
 THEVERYTOP:
 
-        Threading.Thread.Sleep(300)
+        ' Threading.Thread.Sleep(300)
 
         If BackgroundWorker1.CancellationPending = True Then Exit Sub
 
+        Dim t As Integer = 0
 
+        'Threading.Thread.Sleep(300)
 
-        Dim ping As New System.Net.NetworkInformation.Ping
-        'Dim ms = ping.Send("10.10.2.1").RoundtripTime()
-        Dim ms = ping.Send(DataGridView1.Rows.Item(0).Cells(3).Value).RoundtripTime()
+        For t = 0 To LINE_COUNT - 1
 
-        DataGridView1.Rows.Item(0).Cells(5).Value = ms
-        DataGridView1.Rows.Item(0).Cells(7).Value = DataGridView1.Rows.Item(0).Cells(7).Value + 1
+            Dim ping As New System.Net.NetworkInformation.Ping
+            'Dim ms = ping.Send("10.10.2.1").RoundtripTime()
 
-        ms = ping.Send(DataGridView1.Rows.Item(0).Cells(4).Value).RoundtripTime()
-        DataGridView1.Rows.Item(0).Cells(6).Value = ms
-        DataGridView1.Rows.Item(0).Cells(8).Value = DataGridView1.Rows.Item(0).Cells(8).Value + 1
+            Dim ms As Integer = 0
 
-        'DataGridView1.Rows.Item(0).Cells(9).Value = DataGridView1.Rows.Item(9).Cells(7).Value + 1
+            ms = ping.Send(DataGridView1.Rows.Item(t).Cells(3).Value).RoundtripTime()
 
+            DataGridView1.Rows.Item(t).Cells(5).Value = ms
+            DataGridView1.Rows.Item(t).Cells(7).Value = DataGridView1.Rows.Item(t).Cells(7).Value + 1
+
+            If ms = 0 Then DataGridView1.Rows.Item(t).Cells(9).Value = DataGridView1.Rows.Item(t).Cells(9).Value + 1
+
+            ms = 0
+
+            ms = ping.Send(DataGridView1.Rows.Item(t).Cells(4).Value).RoundtripTime()
+
+            DataGridView1.Rows.Item(t).Cells(6).Value = ms
+            DataGridView1.Rows.Item(t).Cells(8).Value = DataGridView1.Rows.Item(t).Cells(8).Value + 1
+
+            If ms = 0 Then DataGridView1.Rows.Item(t).Cells(10).Value = DataGridView1.Rows.Item(t).Cells(10).Value + 1
+
+        Next t
 
         GoTo THEVERYTOP
 

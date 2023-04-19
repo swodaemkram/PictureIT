@@ -119,7 +119,7 @@ Partial Class Form3
         '
         'Link2_Number_of_Failed_Pings
         '
-        Me.Link2_Number_of_Failed_Pings.HeaderText = "Link1_Number_of_Failed_Pings"
+        Me.Link2_Number_of_Failed_Pings.HeaderText = "Link2_Number_of_Failed_Pings"
         Me.Link2_Number_of_Failed_Pings.Name = "Link2_Number_of_Failed_Pings"
         Me.Link2_Number_of_Failed_Pings.ReadOnly = True
         '

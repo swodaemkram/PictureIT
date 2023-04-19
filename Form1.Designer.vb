@@ -39,6 +39,7 @@ Partial Class Form1
         Me.StartTestingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StopTestingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -94,47 +95,47 @@ Partial Class Form1
         'LoadNetworkToolStripMenuItem
         '
         Me.LoadNetworkToolStripMenuItem.Name = "LoadNetworkToolStripMenuItem"
-        Me.LoadNetworkToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
+        Me.LoadNetworkToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.LoadNetworkToolStripMenuItem.Text = "Load Network"
         '
         'CeateNewNetworkToolStripMenuItem
         '
         Me.CeateNewNetworkToolStripMenuItem.Name = "CeateNewNetworkToolStripMenuItem"
-        Me.CeateNewNetworkToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
+        Me.CeateNewNetworkToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.CeateNewNetworkToolStripMenuItem.Text = "Ceate New Network"
         '
         'EditToolStripMenuItem
         '
         Me.EditToolStripMenuItem.Enabled = False
         Me.EditToolStripMenuItem.Name = "EditToolStripMenuItem"
-        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
+        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.EditToolStripMenuItem.Text = "Edit"
         '
         'AddToolStripMenuItem
         '
         Me.AddToolStripMenuItem.Enabled = False
         Me.AddToolStripMenuItem.Name = "AddToolStripMenuItem"
-        Me.AddToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
+        Me.AddToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.AddToolStripMenuItem.Text = "Add"
         '
         'DeleteToolStripMenuItem
         '
         Me.DeleteToolStripMenuItem.Enabled = False
         Me.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem"
-        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
+        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.DeleteToolStripMenuItem.Text = "Delete"
         '
         'SaveToolStripMenuItem
         '
         Me.SaveToolStripMenuItem.Enabled = False
         Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
-        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
+        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.SaveToolStripMenuItem.Text = "Save"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'StartTestingToolStripMenuItem
@@ -150,10 +151,6 @@ Partial Class Form1
         Me.StopTestingToolStripMenuItem.Name = "StopTestingToolStripMenuItem"
         Me.StopTestingToolStripMenuItem.Size = New System.Drawing.Size(83, 20)
         Me.StopTestingToolStripMenuItem.Text = "Stop Testing"
-        '
-        'OpenFileDialog1
-        '
-        Me.OpenFileDialog1.Filter = "Picture I.T. File|*.pin"
         '
         'Form1
         '
@@ -193,4 +190,5 @@ Partial Class Form1
     Friend WithEvents StartTestingToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents StopTestingToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CeateNewNetworkToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SaveFileDialog1 As SaveFileDialog
 End Class
