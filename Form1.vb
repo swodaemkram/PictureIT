@@ -2,6 +2,11 @@
 Imports System.IO
 Imports System.Text
 Imports System.Net
+Imports System.Net.NetworkInformation
+Imports System.Threading
+Imports System.Windows.Forms.Design.AxImporter
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+Imports System.Runtime.InteropServices
 
 Public Module Module1
 
@@ -13,7 +18,7 @@ Public Module Module1
     Public FILE_NAME As String = ""
     Public NETWORK_MAP As String = ""
     Public NEW_MAP As String = ""
-
+    Public eend As Integer = 0
 End Module
 
 Public Class Form1
@@ -31,6 +36,9 @@ Public Class Form1
         Form2.WindowState = 1
         Form2.Show()
 
+        Form4.MdiParent = Me
+        Form4.WindowState = 0
+        Form4.Show()
 
     End Sub
 
@@ -85,12 +93,7 @@ CLOSEIT:
         Me.SaveToolStripMenuItem.Enabled = False
     End Sub
 
-    Private Sub AddToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddToolStripMenuItem.Click
-        EditMode = True
-        Form3.DataGridView1.ReadOnly = False
-        Form2.Timer1.Enabled = False
-        SaveToolStripMenuItem.Enabled = True
-    End Sub
+
 
     Private Sub ToolStripStatusLabel1_Click(sender As Object, e As EventArgs) Handles ToolStripStatusLabel1.Click
 
@@ -100,7 +103,7 @@ CLOSEIT:
         ADD_NEW_RECORD = True
         EditMode = True
         Form3.DataGridView1.ReadOnly = False
-        Form2.Timer1.Enabled = False
+        ' Form2.Timer1.Enabled = False
         SaveToolStripMenuItem.Enabled = True
     End Sub
 
@@ -113,7 +116,7 @@ CLOSEIT:
     End Sub
 
     Private Sub LoadNetworkToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LoadNetworkToolStripMenuItem.Click
-
+        Me.EditToolStripMenuItem.Enabled = True
         Me.OpenFileDialog1.Filter = "Picture I.T. File|*.pin"
 
         Form2.Timer1.Enabled = False
@@ -167,34 +170,43 @@ CLOSEIT:
         End If
         'Done Loading The Database *****************************************************************
         Form2.Timer1.Enabled = True
-
     End Sub
 
-    Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) 
+    Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs)
 
 
 
     End Sub
 
     Private Sub StartTestingToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles StartTestingToolStripMenuItem.Click
+        Me.EditToolStripMenuItem.Enabled = False
+        Me.CeateNewNetworkToolStripMenuItem.Enabled = False
+        Me.LoadNetworkToolStripMenuItem.Enabled = False
+        Me.ExitToolStripMenuItem.Enabled = False
         Form3.BackgroundWorker1.RunWorkerAsync()
         Me.StopTestingToolStripMenuItem.Enabled = True
         Me.StartTestingToolStripMenuItem.Enabled = False
     End Sub
 
     Private Sub StopTestingToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles StopTestingToolStripMenuItem.Click
+
+        Me.EditToolStripMenuItem.Enabled = True
+        Me.CeateNewNetworkToolStripMenuItem.Enabled = True
+        Me.LoadNetworkToolStripMenuItem.Enabled = True
+        Me.ExitToolStripMenuItem.Enabled = True
         Form3.BackgroundWorker1.CancelAsync()
         Me.StopTestingToolStripMenuItem.Enabled = False
         Me.StartTestingToolStripMenuItem.Enabled = True
     End Sub
 
-    Private Sub ToolStripStatusLabel3_Click(sender As Object, e As EventArgs) 
+    Private Sub ToolStripStatusLabel3_Click(sender As Object, e As EventArgs)
 
     End Sub
 
     Private Sub CeateNewNetworkToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CeateNewNetworkToolStripMenuItem.Click
 
         EditMode = True
+        Form2.Timer1.Enabled = True
         Form3.DataGridView1.Rows.Clear()
         Me.SaveToolStripMenuItem.Enabled = True
         Me.OpenFileDialog1.Filter = "Picture File|*.jpg"
@@ -203,8 +215,88 @@ CLOSEIT:
         Form2.BackgroundImage = New System.Drawing.Bitmap(NETWORK_MAP)
         Form3.DataGridView1.ReadOnly = False
 
+    End Sub
 
+    Private Sub TraceRouteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TraceRouteToolStripMenuItem.Click
 
 
     End Sub
+
+    Private Sub TraceToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TraceToolStripMenuItem.Click
+
+        Dim iplist As IEnumerable(Of IPAddress)
+        Dim ee As Integer = 0
+        Form4.DataGridView1.Rows.Clear()
+
+        iplist = TraceRoute.GetTraceRoute(Form4.TextBox1.Text)
+        eend = iplist.Count
+
+        For ee = 0 To eend - 1
+
+            Form4.DataGridView1.Rows.Add(iplist(ee).ToString)
+
+        Next ee
+
+        MsgBox("Trace Complete over " & eend & " Hopps...")
+
+    End Sub
+
+    Private Sub ExportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExportToolStripMenuItem.Click
+        Form3.DataGridView1.Rows.Clear()
+
+        Dim IMPORTTRACE As Integer = 0
+        Form3.DataGridView1.Rows.Add()
+
+        For IMPORTTRACE = 0 To eend - 1
+            Form3.DataGridView1.Rows.Add()
+            Form3.DataGridView1.Rows.Item(IMPORTTRACE).Cells(0).Value = "Link " & IMPORTTRACE
+            Form3.DataGridView1.Rows.Item(IMPORTTRACE).Cells(3).Value = Form4.DataGridView1.Rows.Item(IMPORTTRACE).Cells(0).Value
+
+            If (IMPORTTRACE + 1) < eend Then
+
+                Form3.DataGridView1.Rows.Item(IMPORTTRACE).Cells(4).Value = Form4.DataGridView1.Rows.Item(IMPORTTRACE + 1).Cells(0).Value
+
+            Else
+
+                Form3.DataGridView1.Rows.Item(IMPORTTRACE).Cells(4).Value = Form4.TextBox1.Text
+
+            End If
+
+
+        Next
+
+    End Sub
+End Class
+
+Public Class TraceRoute
+    Private Const Data As String = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+
+    Public Shared Function GetTraceRoute(ByVal hostNameOrAddress As String) As IEnumerable(Of IPAddress)
+        Return GetTraceRoute(hostNameOrAddress, 1)
+    End Function
+    Private Shared Function GetTraceRoute(ByVal hostNameOrAddress As String, ByVal ttl As Integer) As IEnumerable(Of IPAddress)
+        Dim pinger As Ping = New Ping
+        Dim pingerOptions As PingOptions = New PingOptions(ttl, True)
+        Dim timeout As Integer = 10000
+        Dim buffer() As Byte = Encoding.ASCII.GetBytes(Data)
+        Dim reply As PingReply
+
+        reply = pinger.Send(hostNameOrAddress, timeout, buffer, pingerOptions)
+
+        Dim result As List(Of IPAddress) = New List(Of IPAddress)
+        If reply.Status = IPStatus.Success Then
+            result.Add(reply.Address)
+        ElseIf reply.Status = IPStatus.TtlExpired Then
+            'add the currently returned address
+            result.Add(reply.Address)
+            'recurse to get the next address...
+            Dim tempResult As IEnumerable(Of IPAddress)
+            tempResult = GetTraceRoute(hostNameOrAddress, ttl + 1)
+            result.AddRange(tempResult)
+        Else
+            'failure 
+        End If
+
+        Return result
+    End Function
 End Class

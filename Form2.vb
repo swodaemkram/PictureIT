@@ -5,10 +5,6 @@ Public Class Form2
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
 
-
-
-
-
     End Sub
 
     Private Sub Form2_Paint(sender As Object, e As PaintEventArgs) Handles Me.Paint
@@ -61,9 +57,11 @@ Public Class Form2
         Dim BColor As Integer = 0
         Dim PingDelay As Integer = 0
 
-        ' For t = 0 To LINE_COUNT - 1
+        On Error Resume Next
+
         For t = 0 To LINE_COUNT - 1
             Dim PATH_QUALITY As Integer = Form3.DataGridView1.Rows(t).Cells(1).Value
+
 
             POINT12 = Form3.DataGridView1.Rows(t).Cells(1).Value
             Dim FIRST_POINT As String() = POINT12.Split(".")

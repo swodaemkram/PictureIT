@@ -15,7 +15,7 @@
 
 THEVERYTOP:
 
-        ' Threading.Thread.Sleep(300)
+        Threading.Thread.Sleep(200)
 
         If BackgroundWorker1.CancellationPending = True Then Exit Sub
 
