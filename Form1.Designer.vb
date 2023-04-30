@@ -26,6 +26,7 @@ Partial Class Form1
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -40,15 +41,17 @@ Partial Class Form1
         Me.TraceRouteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TraceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MACToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
+        Me.ToolStripStatusLabel4 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'StatusStrip1
         '
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel2})
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel2, Me.ToolStripStatusLabel3, Me.ToolStripStatusLabel4})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 428)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Size = New System.Drawing.Size(800, 22)
@@ -75,6 +78,12 @@ Partial Class Form1
         Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(128, 17)
         Me.ToolStripStatusLabel2.Text = "ToolStripStatusLabel2"
         '
+        'ToolStripStatusLabel3
+        '
+        Me.ToolStripStatusLabel3.ForeColor = System.Drawing.Color.DarkOrange
+        Me.ToolStripStatusLabel3.Name = "ToolStripStatusLabel3"
+        Me.ToolStripStatusLabel3.Size = New System.Drawing.Size(0, 17)
+        '
         'Timer1
         '
         Me.Timer1.Enabled = True
@@ -82,7 +91,7 @@ Partial Class Form1
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.StartTestingToolStripMenuItem, Me.StopTestingToolStripMenuItem, Me.TraceRouteToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.StartTestingToolStripMenuItem, Me.StopTestingToolStripMenuItem, Me.TraceRouteToolStripMenuItem, Me.MACToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(800, 24)
@@ -99,40 +108,40 @@ Partial Class Form1
         'LoadNetworkToolStripMenuItem
         '
         Me.LoadNetworkToolStripMenuItem.Name = "LoadNetworkToolStripMenuItem"
-        Me.LoadNetworkToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
+        Me.LoadNetworkToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
         Me.LoadNetworkToolStripMenuItem.Text = "Load Network"
         '
         'CeateNewNetworkToolStripMenuItem
         '
         Me.CeateNewNetworkToolStripMenuItem.Name = "CeateNewNetworkToolStripMenuItem"
-        Me.CeateNewNetworkToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
-        Me.CeateNewNetworkToolStripMenuItem.Text = "Ceate New Network"
+        Me.CeateNewNetworkToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
+        Me.CeateNewNetworkToolStripMenuItem.Text = "Create New Network"
         '
         'EditToolStripMenuItem
         '
         Me.EditToolStripMenuItem.Enabled = False
         Me.EditToolStripMenuItem.Name = "EditToolStripMenuItem"
-        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
+        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
         Me.EditToolStripMenuItem.Text = "Edit"
         '
         'DeleteToolStripMenuItem
         '
         Me.DeleteToolStripMenuItem.Enabled = False
         Me.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem"
-        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
+        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
         Me.DeleteToolStripMenuItem.Text = "Delete"
         '
         'SaveToolStripMenuItem
         '
         Me.SaveToolStripMenuItem.Enabled = False
         Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
-        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
+        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
         Me.SaveToolStripMenuItem.Text = "Save"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'StartTestingToolStripMenuItem
@@ -159,14 +168,26 @@ Partial Class Form1
         'TraceToolStripMenuItem
         '
         Me.TraceToolStripMenuItem.Name = "TraceToolStripMenuItem"
-        Me.TraceToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.TraceToolStripMenuItem.Size = New System.Drawing.Size(110, 22)
         Me.TraceToolStripMenuItem.Text = "Trace"
         '
         'ExportToolStripMenuItem
         '
         Me.ExportToolStripMenuItem.Name = "ExportToolStripMenuItem"
-        Me.ExportToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ExportToolStripMenuItem.Size = New System.Drawing.Size(110, 22)
         Me.ExportToolStripMenuItem.Text = "Import"
+        '
+        'MACToolStripMenuItem
+        '
+        Me.MACToolStripMenuItem.Name = "MACToolStripMenuItem"
+        Me.MACToolStripMenuItem.Size = New System.Drawing.Size(46, 20)
+        Me.MACToolStripMenuItem.Text = "MAC"
+        '
+        'ToolStripStatusLabel4
+        '
+        Me.ToolStripStatusLabel4.Name = "ToolStripStatusLabel4"
+        Me.ToolStripStatusLabel4.Size = New System.Drawing.Size(119, 17)
+        Me.ToolStripStatusLabel4.Text = "ToolStripStatusLabel4"
         '
         'Form1
         '
@@ -209,4 +230,7 @@ Partial Class Form1
     Friend WithEvents TraceRouteToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TraceToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ExportToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripStatusLabel3 As ToolStripStatusLabel
+    Friend WithEvents MACToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripStatusLabel4 As ToolStripStatusLabel
 End Class

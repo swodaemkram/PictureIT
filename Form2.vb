@@ -1,9 +1,11 @@
-﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar
+﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar
 
 Public Class Form2
 
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        Me.PictureBox1.Height = Me.Height + 600
+        Me.PictureBox1.Width = Me.Width + 600
 
     End Sub
 
@@ -28,8 +30,8 @@ Public Class Form2
 
 
             Dim x As Integer = Form3.DataGridView1.CurrentCellAddress.X
-            'MsgBox(MousePosition().ToString())
-            Form3.DataGridView1.CurrentCell.Value = e.X & "." & e.Y 'Make Changes Here
+
+            Form3.DataGridView1.CurrentCell.Value = e.X & "." & e.Y
 
 
         End If
@@ -60,8 +62,7 @@ Public Class Form2
         On Error Resume Next
 
         For t = 0 To LINE_COUNT - 1
-            Dim PATH_QUALITY As Integer = Form3.DataGridView1.Rows(t).Cells(1).Value
-
+            'Dim PATH_QUALITY As Integer = Form3.DataGridView1.Rows(t).Cells(6).Value 'Color of Line
 
             POINT12 = Form3.DataGridView1.Rows(t).Cells(1).Value
             Dim FIRST_POINT As String() = POINT12.Split(".")
@@ -69,33 +70,72 @@ Public Class Form2
             Dim SECOND_POINT As String() = POINT34.Split(".")
 
             PingDelay = Form3.DataGridView1.Rows(t).Cells(6).Value
+            Form1.ToolStripStatusLabel3.Text = PingDelay
 
+            If PingDelay > 250 Then PingDelay = 250
             If PingDelay = 0 Then RColor = 250 : GColor = 0 : BColor = 0
-            If PingDelay > 0 Then GColor = 150
+
+            If PingDelay > 0 Then GColor = 250 - PingDelay : RColor = PingDelay : BColor = PingDelay
+
+
             Dim myPen As New System.Drawing.Pen(System.Drawing.Color.FromArgb(RColor, GColor, BColor), 5)
 
+            ' Draw lines of each link
 
-            Dim formGraphics As System.Drawing.Graphics
-            formGraphics = Me.CreateGraphics()
-            formGraphics.DrawLine(myPen, Convert.ToInt32(FIRST_POINT(0)), Convert.ToInt32(FIRST_POINT(1)), Convert.ToInt32(SECOND_POINT(0)), Convert.ToInt32(SECOND_POINT(1)))
-            myPen.Dispose()
-            formGraphics.Dispose()
+            Dim Surface As Graphics = Me.PictureBox1.CreateGraphics()
 
-        Next t
+            Surface.DrawLine(myPen, Convert.ToInt32(FIRST_POINT(0)), Convert.ToInt32(FIRST_POINT(1)), Convert.ToInt32(SECOND_POINT(0)), Convert.ToInt32(SECOND_POINT(1)))
 
-        'Dim ping As New System.Net.NetworkInformation.Ping
-        'Dim ms = ping.Send("10.10.2.230").RoundtripTime()
-        'Me.Text = ms
+            'myPen.Dispose()
+            'formGraphics.Dispose()
 
-        t = 0
+            ' End of Draw Lines
+
+            Next t
+
+            t = 0
         Me.Timer1.Enabled = True
 
     End Sub
 
     Private Sub Form2_MouseMove(sender As Object, e As MouseEventArgs) Handles Me.MouseMove
         ' Me.Text = e.Location.ToString
+        'Form1.ToolStripStatusLabel2.Text = String.Format("Mouse Position X:{0}, Y:{1}", Control.MousePosition.X, Control.MousePosition.Y)
 
 
+    End Sub
+
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+
+    End Sub
+
+    Private Sub PictureBox1_MouseWheel(sender As Object, e As MouseEventArgs) Handles PictureBox1.MouseWheel
+
+
+
+    End Sub
+
+    Private Sub PictureBox1_DoubleClick(sender As Object, e As EventArgs) Handles PictureBox1.DoubleClick
+
+    End Sub
+
+    Private Sub Form2_DoubleClick(sender As Object, e As EventArgs) Handles Me.DoubleClick
+
+    End Sub
+
+    Private Sub PictureBox1_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles PictureBox1.MouseDoubleClick
+        If EditMode = True Then
+
+
+            Dim x As Integer = Form3.DataGridView1.CurrentCellAddress.X
+            'MsgBox(MousePosition().ToString())
+            Form3.DataGridView1.CurrentCell.Value = e.X & "." & e.Y 'Make Changes Here
+
+
+        End If
+    End Sub
+
+    Private Sub PictureBox1_Paint(sender As Object, e As PaintEventArgs) Handles PictureBox1.Paint
 
     End Sub
 End Class

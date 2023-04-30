@@ -7,7 +7,6 @@ Imports System.Threading
 Imports System.Windows.Forms.Design.AxImporter
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Imports System.Runtime.InteropServices
-
 Public Module Module1
 
     Public MouzeX As Integer = 0
@@ -19,6 +18,11 @@ Public Module Module1
     Public NETWORK_MAP As String = ""
     Public NEW_MAP As String = ""
     Public eend As Integer = 0
+    Public HEIGHT_OFF_SET As Integer = 0
+    Public WIDTH_OFF_SET As Integer = 0
+    'Public X As Integer = 0
+    'Public Y As Integer = 0
+
 End Module
 
 Public Class Form1
@@ -33,11 +37,11 @@ Public Class Form1
 
         Form2.MdiParent = Me
         Form2.Height = Me.Height - 300 : Form2.Width = Me.Width - 50
-        Form2.WindowState = 1
+        Form2.WindowState = 0
         Form2.Show()
 
         Form4.MdiParent = Me
-        Form4.WindowState = 0
+        Form4.WindowState = 1
         Form4.Show()
 
     End Sub
@@ -136,7 +140,10 @@ CLOSEIT:
 
             TextLine = objReader.ReadLine()
             NETWORK_MAP = TextLine
-            Form2.BackgroundImage = New System.Drawing.Bitmap(TextLine)
+            'Form2.BackgroundImage = New System.Drawing.Bitmap(TextLine)
+            Form2.PictureBox1.Image = New System.Drawing.Bitmap(TextLine)
+            'Form2.PictureBox1.Width = Form2.Width
+            'Form2.PictureBox1.Height = Form2.Height
 
             LINE_COUNT = Form3.DataGridView1.Rows.Add()
 
@@ -212,17 +219,25 @@ CLOSEIT:
         Me.OpenFileDialog1.Filter = "Picture File|*.jpg"
         Me.OpenFileDialog1.ShowDialog()
         NETWORK_MAP = Me.OpenFileDialog1.FileName
-        Form2.BackgroundImage = New System.Drawing.Bitmap(NETWORK_MAP)
+        'Form2.BackgroundImage = New System.Drawing.Bitmap(NETWORK_MAP)
+
+        Form2.PictureBox1.Image = New System.Drawing.Bitmap(NETWORK_MAP)
+
+
         Form3.DataGridView1.ReadOnly = False
 
     End Sub
 
     Private Sub TraceRouteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TraceRouteToolStripMenuItem.Click
-
+        Form4.WindowState = 0
 
     End Sub
 
     Private Sub TraceToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TraceToolStripMenuItem.Click
+
+
+
+        If Form4.TextBox1.Text = "" Then MsgBox("Requiered URL or I.P. Missing") : Exit Sub
 
         Dim iplist As IEnumerable(Of IPAddress)
         Dim ee As Integer = 0
@@ -266,6 +281,17 @@ CLOSEIT:
         Next
 
     End Sub
+
+    Private Sub MACToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MACToolStripMenuItem.Click
+
+        Dim macAddress As String = clsARP.GetMAC("10.10.2.1")
+        MsgBox(macAddress)
+
+    End Sub
+
+    Private Sub ToolStripStatusLabel4_Click(sender As Object, e As EventArgs) Handles ToolStripStatusLabel4.Click
+
+    End Sub
 End Class
 
 Public Class TraceRoute
@@ -299,4 +325,22 @@ Public Class TraceRoute
 
         Return result
     End Function
+
 End Class
+
+
+
+Public Class clsARP
+    Declare Function SendARP Lib "iphlpapi.dll" (ByVal DestIP As UInt32, ByVal SrcIP As UInt32, ByVal pMacAddr As Byte(), ByRef PhyAddrLen As Integer) As Integer
+    Public Shared Function GetMAC(ByVal IPAddress As String) As String
+        Dim addr As IPAddress = Net.IPAddress.Parse(IPAddress)
+        Dim mac() As Byte = New Byte(6) {}
+        Dim len As Integer = mac.Length
+        SendARP(CUInt(addr.Address), 0, mac, len)
+        Dim macAddress As String = BitConverter.ToString(mac, 0, len)
+        Return macAddress
+    End Function
+    Private Sub New()
+    End Sub
+End Class
+
