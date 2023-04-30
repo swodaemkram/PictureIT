@@ -58,9 +58,6 @@ Public Class Form1
         End
     End Sub
 
-    Private Sub ToolStripStatusLabel2_Click(sender As Object, e As EventArgs) Handles ToolStripStatusLabel2.Click
-
-    End Sub
 
     Private Sub SaveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaveToolStripMenuItem.Click
 
@@ -99,9 +96,6 @@ CLOSEIT:
 
 
 
-    Private Sub ToolStripStatusLabel1_Click(sender As Object, e As EventArgs) Handles ToolStripStatusLabel1.Click
-
-    End Sub
 
     Private Sub EditToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditToolStripMenuItem.Click
         ADD_NEW_RECORD = True
@@ -109,14 +103,16 @@ CLOSEIT:
         Form3.DataGridView1.ReadOnly = False
         ' Form2.Timer1.Enabled = False
         SaveToolStripMenuItem.Enabled = True
-    End Sub
-
-    Private Sub FileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FileToolStripMenuItem.Click
+        DeleteToolStripMenuItem.Enabled = True
 
     End Sub
+
+
 
     Private Sub DeleteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteToolStripMenuItem.Click
 
+        Form3.DataGridView1.Rows.RemoveAt(Form3.DataGridView1.CurrentRow.Index)
+        LINE_COUNT = LINE_COUNT - 1
     End Sub
 
     Private Sub LoadNetworkToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LoadNetworkToolStripMenuItem.Click
@@ -179,11 +175,6 @@ CLOSEIT:
         Form2.Timer1.Enabled = True
     End Sub
 
-    Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs)
-
-
-
-    End Sub
 
     Private Sub StartTestingToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles StartTestingToolStripMenuItem.Click
         Me.EditToolStripMenuItem.Enabled = False
@@ -230,7 +221,7 @@ CLOSEIT:
 
     Private Sub TraceRouteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TraceRouteToolStripMenuItem.Click
         Form4.WindowState = 0
-
+        Form4.BringToFront()
     End Sub
 
     Private Sub TraceToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TraceToolStripMenuItem.Click
@@ -249,7 +240,8 @@ CLOSEIT:
         For ee = 0 To eend - 1
 
             Form4.DataGridView1.Rows.Add(iplist(ee).ToString)
-
+            ' Dim macAddress As String = clsARP.GetMAC(iplist(ee).ToString)
+            ' Form4.DataGridView1.Rows.Item(ee).Cells(1).Value = macAddress
         Next ee
 
         MsgBox("Trace Complete over " & eend & " Hopps...")
@@ -290,6 +282,10 @@ CLOSEIT:
     End Sub
 
     Private Sub ToolStripStatusLabel4_Click(sender As Object, e As EventArgs) Handles ToolStripStatusLabel4.Click
+
+    End Sub
+
+    Private Sub StatusStrip1_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles StatusStrip1.ItemClicked
 
     End Sub
 End Class

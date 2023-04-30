@@ -27,6 +27,7 @@ Partial Class Form1
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel4 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -44,7 +45,6 @@ Partial Class Form1
         Me.MACToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
-        Me.ToolStripStatusLabel4 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -83,6 +83,12 @@ Partial Class Form1
         Me.ToolStripStatusLabel3.ForeColor = System.Drawing.Color.DarkOrange
         Me.ToolStripStatusLabel3.Name = "ToolStripStatusLabel3"
         Me.ToolStripStatusLabel3.Size = New System.Drawing.Size(0, 17)
+        '
+        'ToolStripStatusLabel4
+        '
+        Me.ToolStripStatusLabel4.Name = "ToolStripStatusLabel4"
+        Me.ToolStripStatusLabel4.Size = New System.Drawing.Size(119, 17)
+        Me.ToolStripStatusLabel4.Text = "ToolStripStatusLabel4"
         '
         'Timer1
         '
@@ -183,12 +189,6 @@ Partial Class Form1
         Me.MACToolStripMenuItem.Size = New System.Drawing.Size(46, 20)
         Me.MACToolStripMenuItem.Text = "MAC"
         '
-        'ToolStripStatusLabel4
-        '
-        Me.ToolStripStatusLabel4.Name = "ToolStripStatusLabel4"
-        Me.ToolStripStatusLabel4.Size = New System.Drawing.Size(119, 17)
-        Me.ToolStripStatusLabel4.Text = "ToolStripStatusLabel4"
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -201,7 +201,7 @@ Partial Class Form1
         Me.MainMenuStrip = Me.MenuStrip1
         Me.MinimizeBox = False
         Me.Name = "Form1"
-        Me.Text = "Picture I.T. Network Visualizer By Mark Meadows (c) 2023 Ver 0.0.8"
+        Me.Text = "Picture I.T. Network Visualizer By Mark Meadows (c) 2023 Ver 0.1.1"
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         Me.MenuStrip1.ResumeLayout(False)

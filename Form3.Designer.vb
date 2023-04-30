@@ -23,7 +23,6 @@ Partial Class Form3
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.LinkName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Link1_Location = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Link2_Location = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -37,6 +36,7 @@ Partial Class Form3
         Me.Link2_Number_of_Failed_Pings = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Link1_Ping_Average = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Link2_Ping_Average = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -53,87 +53,87 @@ Partial Class Form3
         Me.DataGridView1.Size = New System.Drawing.Size(1130, 119)
         Me.DataGridView1.TabIndex = 0
         '
-        'BackgroundWorker1
-        '
-        Me.BackgroundWorker1.WorkerSupportsCancellation = True
-        '
         'LinkName
         '
-        Me.LinkName.HeaderText = "LinkName"
+        Me.LinkName.HeaderText = "Link Name"
         Me.LinkName.Name = "LinkName"
         Me.LinkName.ReadOnly = True
         '
         'Link1_Location
         '
-        Me.Link1_Location.HeaderText = "Link1_Location"
+        Me.Link1_Location.HeaderText = "Link1 Location"
         Me.Link1_Location.Name = "Link1_Location"
         Me.Link1_Location.ReadOnly = True
         '
         'Link2_Location
         '
-        Me.Link2_Location.HeaderText = "Link2_Location"
+        Me.Link2_Location.HeaderText = "Link2 Location"
         Me.Link2_Location.Name = "Link2_Location"
         Me.Link2_Location.ReadOnly = True
         '
         'IP_Address_Link1
         '
-        Me.IP_Address_Link1.HeaderText = "IP_Address_Link1"
+        Me.IP_Address_Link1.HeaderText = "IP Address Link1"
         Me.IP_Address_Link1.Name = "IP_Address_Link1"
         Me.IP_Address_Link1.ReadOnly = True
         '
         'IP_Address_Link2
         '
-        Me.IP_Address_Link2.HeaderText = "IP_Address_Link2"
+        Me.IP_Address_Link2.HeaderText = "IP Address Link2"
         Me.IP_Address_Link2.Name = "IP_Address_Link2"
         Me.IP_Address_Link2.ReadOnly = True
         '
         'Link1PingTime
         '
-        Me.Link1PingTime.HeaderText = "Link1PingTime"
+        Me.Link1PingTime.HeaderText = "Link1 PingTime"
         Me.Link1PingTime.Name = "Link1PingTime"
         Me.Link1PingTime.ReadOnly = True
         '
         'Link2_PingTime
         '
-        Me.Link2_PingTime.HeaderText = "Link2_PingTime"
+        Me.Link2_PingTime.HeaderText = "Link2 PingTime"
         Me.Link2_PingTime.Name = "Link2_PingTime"
         Me.Link2_PingTime.ReadOnly = True
         '
         'Link1_Number_of_Pings
         '
-        Me.Link1_Number_of_Pings.HeaderText = "Link1_Number_of_Pings"
+        Me.Link1_Number_of_Pings.HeaderText = "Link1 Total Pings"
         Me.Link1_Number_of_Pings.Name = "Link1_Number_of_Pings"
         Me.Link1_Number_of_Pings.ReadOnly = True
         '
         'Link2_Number_of_Pings
         '
-        Me.Link2_Number_of_Pings.HeaderText = "Link2_Number_of_Pings"
+        Me.Link2_Number_of_Pings.HeaderText = "Link2 Total Pings"
         Me.Link2_Number_of_Pings.Name = "Link2_Number_of_Pings"
         Me.Link2_Number_of_Pings.ReadOnly = True
         '
         'Link1_Number_of_Failed_Pings
         '
-        Me.Link1_Number_of_Failed_Pings.HeaderText = "Link1_Number_of_Failed_Pings"
+        Me.Link1_Number_of_Failed_Pings.HeaderText = "Link1 Number Failed Pings"
         Me.Link1_Number_of_Failed_Pings.Name = "Link1_Number_of_Failed_Pings"
         Me.Link1_Number_of_Failed_Pings.ReadOnly = True
         '
         'Link2_Number_of_Failed_Pings
         '
-        Me.Link2_Number_of_Failed_Pings.HeaderText = "Link2_Number_of_Failed_Pings"
+        Me.Link2_Number_of_Failed_Pings.HeaderText = "Link2 Numbe Failed Pings"
         Me.Link2_Number_of_Failed_Pings.Name = "Link2_Number_of_Failed_Pings"
         Me.Link2_Number_of_Failed_Pings.ReadOnly = True
         '
         'Link1_Ping_Average
         '
-        Me.Link1_Ping_Average.HeaderText = "Link1_Ping_Average"
+        Me.Link1_Ping_Average.HeaderText = "Link1 % Faile"
         Me.Link1_Ping_Average.Name = "Link1_Ping_Average"
         Me.Link1_Ping_Average.ReadOnly = True
         '
         'Link2_Ping_Average
         '
-        Me.Link2_Ping_Average.HeaderText = "Link2_Ping_Average"
+        Me.Link2_Ping_Average.HeaderText = "Link2 % Failed"
         Me.Link2_Ping_Average.Name = "Link2_Ping_Average"
         Me.Link2_Ping_Average.ReadOnly = True
+        '
+        'BackgroundWorker1
+        '
+        Me.BackgroundWorker1.WorkerSupportsCancellation = True
         '
         'Form3
         '

@@ -1,4 +1,5 @@
-﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar
+﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar
 
 Public Class Form2
@@ -19,9 +20,6 @@ Public Class Form2
     End Sub
 
 
-    Private Sub Form2_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
-
-    End Sub
 
     Private Sub Form2_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles Me.MouseDoubleClick
 
@@ -38,11 +36,7 @@ Public Class Form2
 
     End Sub
 
-    Private Sub Form2_ClientSizeChanged(sender As Object, e As EventArgs) Handles Me.ClientSizeChanged
 
-
-
-    End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
 
@@ -91,7 +85,7 @@ Public Class Form2
 
             ' End of Draw Lines
 
-            Next t
+        Next t
 
             t = 0
         Me.Timer1.Enabled = True
@@ -105,23 +99,6 @@ Public Class Form2
 
     End Sub
 
-    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
-
-    End Sub
-
-    Private Sub PictureBox1_MouseWheel(sender As Object, e As MouseEventArgs) Handles PictureBox1.MouseWheel
-
-
-
-    End Sub
-
-    Private Sub PictureBox1_DoubleClick(sender As Object, e As EventArgs) Handles PictureBox1.DoubleClick
-
-    End Sub
-
-    Private Sub Form2_DoubleClick(sender As Object, e As EventArgs) Handles Me.DoubleClick
-
-    End Sub
 
     Private Sub PictureBox1_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles PictureBox1.MouseDoubleClick
         If EditMode = True Then
@@ -135,7 +112,12 @@ Public Class Form2
         End If
     End Sub
 
-    Private Sub PictureBox1_Paint(sender As Object, e As PaintEventArgs) Handles PictureBox1.Paint
+    Private Sub PictureBox1_MouseMove(sender As Object, e As MouseEventArgs) Handles PictureBox1.MouseMove
+
+
+    End Sub
+
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
 
     End Sub
 End Class
