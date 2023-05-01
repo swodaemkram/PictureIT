@@ -33,9 +33,9 @@ THEVERYTOP:
             DataGridView1.Rows.Item(t).Cells(7).Value = DataGridView1.Rows.Item(t).Cells(7).Value + 1
 
             If ms = 0 Then DataGridView1.Rows.Item(t).Cells(9).Value = DataGridView1.Rows.Item(t).Cells(9).Value + 1
-            'Average First Host Ping Failures
+            '% First Host Ping Failures
 
-
+            DataGridView1.Rows.Item(t).Cells(11).Value = DataGridView1.Rows.Item(t).Cells(9).Value * DataGridView1.Rows.Item(t).Cells(1).Value / 100
 
             ms = 0
 
@@ -45,10 +45,11 @@ THEVERYTOP:
             DataGridView1.Rows.Item(t).Cells(8).Value = DataGridView1.Rows.Item(t).Cells(8).Value + 1
 
             If ms = 0 Then DataGridView1.Rows.Item(t).Cells(10).Value = DataGridView1.Rows.Item(t).Cells(10).Value + 1
-            'Average Second Host Ping Failures
+            '% Second Host Ping Failures
 
+            DataGridView1.Rows.Item(t).Cells(11).Value = DataGridView1.Rows.Item(t).Cells(9).Value * DataGridView1.Rows.Item(t).Cells(7).Value / 100
 
-
+            DataGridView1.Rows.Item(t).Cells(12).Value = DataGridView1.Rows.Item(t).Cells(10).Value * DataGridView1.Rows.Item(t).Cells(8).Value / 100
 
         Next t
 

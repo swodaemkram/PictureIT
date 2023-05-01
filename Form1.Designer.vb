@@ -42,7 +42,6 @@ Partial Class Form1
         Me.TraceRouteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TraceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MACToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         Me.StatusStrip1.SuspendLayout()
@@ -97,7 +96,7 @@ Partial Class Form1
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.StartTestingToolStripMenuItem, Me.StopTestingToolStripMenuItem, Me.TraceRouteToolStripMenuItem, Me.MACToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.StartTestingToolStripMenuItem, Me.StopTestingToolStripMenuItem, Me.TraceRouteToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(800, 24)
@@ -183,12 +182,6 @@ Partial Class Form1
         Me.ExportToolStripMenuItem.Size = New System.Drawing.Size(110, 22)
         Me.ExportToolStripMenuItem.Text = "Import"
         '
-        'MACToolStripMenuItem
-        '
-        Me.MACToolStripMenuItem.Name = "MACToolStripMenuItem"
-        Me.MACToolStripMenuItem.Size = New System.Drawing.Size(46, 20)
-        Me.MACToolStripMenuItem.Text = "MAC"
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -231,6 +224,5 @@ Partial Class Form1
     Friend WithEvents TraceToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ExportToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripStatusLabel3 As ToolStripStatusLabel
-    Friend WithEvents MACToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripStatusLabel4 As ToolStripStatusLabel
 End Class

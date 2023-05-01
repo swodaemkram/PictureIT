@@ -44,6 +44,13 @@ Public Class Form1
         Form4.WindowState = 1
         Form4.Show()
 
+        Form6.MdiParent = Me
+        Form6.WindowState = 1
+        Form6.Show()
+
+
+
+
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -274,10 +281,9 @@ CLOSEIT:
 
     End Sub
 
-    Private Sub MACToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MACToolStripMenuItem.Click
+    Private Sub MACToolStripMenuItem_Click(sender As Object, e As EventArgs)
 
-        Dim macAddress As String = clsARP.GetMAC("10.10.2.1")
-        MsgBox(macAddress)
+
 
     End Sub
 
@@ -338,5 +344,13 @@ Public Class clsARP
     End Function
     Private Sub New()
     End Sub
+
+
+    ' This is how to use this Function  Dim macAddress As String = clsARP.GetMAC("10.10.2.1")
+
+
+
+
+
 End Class
 
