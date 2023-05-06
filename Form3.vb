@@ -18,8 +18,6 @@ THEVERYTOP:
 
         Dim t As Integer = 0
 
-        'Threading.Thread.Sleep(300)
-
         For t = 0 To LINE_COUNT - 1
 
             Dim ping As New System.Net.NetworkInformation.Ping
@@ -35,8 +33,6 @@ THEVERYTOP:
             If ms = 0 Then DataGridView1.Rows.Item(t).Cells(9).Value = DataGridView1.Rows.Item(t).Cells(9).Value + 1
             '% First Host Ping Failures
 
-            DataGridView1.Rows.Item(t).Cells(11).Value = DataGridView1.Rows.Item(t).Cells(9).Value * DataGridView1.Rows.Item(t).Cells(1).Value / 100
-
             ms = 0
 
             ms = ping.Send(DataGridView1.Rows.Item(t).Cells(4).Value).RoundtripTime()
@@ -44,12 +40,11 @@ THEVERYTOP:
             DataGridView1.Rows.Item(t).Cells(6).Value = ms
             DataGridView1.Rows.Item(t).Cells(8).Value = DataGridView1.Rows.Item(t).Cells(8).Value + 1
 
-            If ms = 0 Then DataGridView1.Rows.Item(t).Cells(10).Value = DataGridView1.Rows.Item(t).Cells(10).Value + 1
-            '% Second Host Ping Failures
+            If ms = 0 Then DataGridView1.Rows.Item(t).Cells(10).Value = DataGridView1.Rows.Item(t).Cells(10).Value + 1 : CURRENT_EVENT = DataGridView1.Rows.Item(t).Cells(4).Value             '% Second Host Ping Failures
 
-            DataGridView1.Rows.Item(t).Cells(11).Value = DataGridView1.Rows.Item(t).Cells(9).Value * DataGridView1.Rows.Item(t).Cells(7).Value / 100
 
-            DataGridView1.Rows.Item(t).Cells(12).Value = DataGridView1.Rows.Item(t).Cells(10).Value * DataGridView1.Rows.Item(t).Cells(8).Value / 100
+            DataGridView1.Rows.Item(t).Cells(11).Value = DataGridView1.Rows.Item(t).Cells(9).Value * 100 / DataGridView1.Rows.Item(t).Cells(7).Value
+            DataGridView1.Rows.Item(t).Cells(12).Value = DataGridView1.Rows.Item(t).Cells(10).Value * 100 / DataGridView1.Rows.Item(t).Cells(8).Value
 
         Next t
 

@@ -1,10 +1,15 @@
-﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+﻿Imports System.Linq.Expressions
+Imports System.Reflection
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement.Button
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement.Status
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar
 
 Public Class Form2
 
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         Me.PictureBox1.Height = Me.Height + 600
         Me.PictureBox1.Width = Me.Width + 600
 
@@ -53,6 +58,9 @@ Public Class Form2
         Dim BColor As Integer = 0
         Dim PingDelay As Integer = 0
 
+
+
+
         On Error Resume Next
 
         For t = 0 To LINE_COUNT - 1
@@ -80,21 +88,31 @@ Public Class Form2
 
             Surface.DrawLine(myPen, Convert.ToInt32(FIRST_POINT(0)), Convert.ToInt32(FIRST_POINT(1)), Convert.ToInt32(SECOND_POINT(0)), Convert.ToInt32(SECOND_POINT(1)))
 
+
+
+
+
+
+
+
+
+
             'myPen.Dispose()
             'formGraphics.Dispose()
 
             ' End of Draw Lines
 
+
+
         Next t
 
-            t = 0
+        t = 0
         Me.Timer1.Enabled = True
 
     End Sub
 
     Private Sub Form2_MouseMove(sender As Object, e As MouseEventArgs) Handles Me.MouseMove
-        ' Me.Text = e.Location.ToString
-        'Form1.ToolStripStatusLabel2.Text = String.Format("Mouse Position X:{0}, Y:{1}", Control.MousePosition.X, Control.MousePosition.Y)
+
 
 
     End Sub
@@ -113,11 +131,34 @@ Public Class Form2
     End Sub
 
     Private Sub PictureBox1_MouseMove(sender As Object, e As MouseEventArgs) Handles PictureBox1.MouseMove
+        Form1.ToolStripStatusLabel5.Text = e.X & " , " & e.Y
+
 
 
     End Sub
 
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+
+    End Sub
+
+    Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
+
+        Dim label_tag(LINE_COUNT) As Label
+
+        Dim g As Integer = 0
+        For g = 0 To LINE_COUNT - 1
+
+            label_tag(g) = New Label
+            label_tag(g).Name = "label" & g
+            label_tag(g).Text = "TEST" & g
+            label_tag(g).AutoSize = True
+            label_tag(g).Location = New Point(80 + g, 33 + g)
+            label_tag(g).BackColor = Color.LightGoldenrodYellow
+            PictureBox1.Controls.Add(label_tag(g))
+
+        Next g
+
+        Timer2.Enabled = False
 
     End Sub
 End Class

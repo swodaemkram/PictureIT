@@ -23,6 +23,7 @@ Partial Class Form3
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.LinkName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Link1_Location = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Link2_Location = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -36,22 +37,26 @@ Partial Class Form3
         Me.Link2_Number_of_Failed_Pings = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Link1_Ping_Average = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Link2_Ping_Average = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DataGridView1
         '
+        Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark
         Me.DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.LinkName, Me.Link1_Location, Me.Link2_Location, Me.IP_Address_Link1, Me.IP_Address_Link2, Me.Link1PingTime, Me.Link2_PingTime, Me.Link1_Number_of_Pings, Me.Link2_Number_of_Pings, Me.Link1_Number_of_Failed_Pings, Me.Link2_Number_of_Failed_Pings, Me.Link1_Ping_Average, Me.Link2_Ping_Average})
-        Me.DataGridView1.GridColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.DataGridView1.GridColor = System.Drawing.SystemColors.ControlText
         Me.DataGridView1.Location = New System.Drawing.Point(12, 12)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowTemplate.Height = 25
         Me.DataGridView1.Size = New System.Drawing.Size(1130, 119)
         Me.DataGridView1.TabIndex = 0
+        '
+        'BackgroundWorker1
+        '
+        Me.BackgroundWorker1.WorkerSupportsCancellation = True
         '
         'LinkName
         '
@@ -115,7 +120,7 @@ Partial Class Form3
         '
         'Link2_Number_of_Failed_Pings
         '
-        Me.Link2_Number_of_Failed_Pings.HeaderText = "Link2 Numbe Failed Pings"
+        Me.Link2_Number_of_Failed_Pings.HeaderText = "Link2 Number Failed Pings"
         Me.Link2_Number_of_Failed_Pings.Name = "Link2_Number_of_Failed_Pings"
         Me.Link2_Number_of_Failed_Pings.ReadOnly = True
         '
@@ -131,21 +136,18 @@ Partial Class Form3
         Me.Link2_Ping_Average.Name = "Link2_Ping_Average"
         Me.Link2_Ping_Average.ReadOnly = True
         '
-        'BackgroundWorker1
-        '
-        Me.BackgroundWorker1.WorkerSupportsCancellation = True
-        '
         'Form3
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1156, 145)
         Me.Controls.Add(Me.DataGridView1)
+        Me.Location = New System.Drawing.Point(1, 11080)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(1172, 184)
         Me.Name = "Form3"
         Me.Opacity = 0.5R
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Network Database Management"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

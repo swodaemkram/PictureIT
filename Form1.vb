@@ -7,6 +7,7 @@ Imports System.Threading
 Imports System.Windows.Forms.Design.AxImporter
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Imports System.Runtime.InteropServices
+
 Public Module Module1
 
     Public MouzeX As Integer = 0
@@ -20,6 +21,7 @@ Public Module Module1
     Public eend As Integer = 0
     Public HEIGHT_OFF_SET As Integer = 0
     Public WIDTH_OFF_SET As Integer = 0
+    Public CURRENT_EVENT As String = ""
     'Public X As Integer = 0
     'Public Y As Integer = 0
 
@@ -37,6 +39,7 @@ Public Class Form1
 
         Form2.MdiParent = Me
         Form2.Height = Me.Height - 300 : Form2.Width = Me.Width - 50
+        Form2.StartPosition =
         Form2.WindowState = 0
         Form2.Show()
 
@@ -45,7 +48,7 @@ Public Class Form1
         Form4.Show()
 
         Form6.MdiParent = Me
-        Form6.WindowState = 1
+        Form6.WindowState = 0
         Form6.Show()
 
 
@@ -58,6 +61,10 @@ Public Class Form1
         ' Me.ToolStripStatusLabel2.Text = String.Format("Mouse Position X:{0}, Y:{1}", Control.MousePosition.X, Control.MousePosition.Y - 50)
         Me.ToolStripStatusLabel2.Text = String.Format("Mouse Position X:{0}, Y:{1}", Control.MousePosition.X, Control.MousePosition.Y)
         Me.ToolStripStatusLabel1.Text = DateString + " " + TimeString
+
+
+
+
 
     End Sub
 
@@ -113,7 +120,6 @@ CLOSEIT:
         DeleteToolStripMenuItem.Enabled = True
 
     End Sub
-
 
 
     Private Sub DeleteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteToolStripMenuItem.Click
@@ -179,6 +185,7 @@ CLOSEIT:
 
         End If
         'Done Loading The Database *****************************************************************
+        Form2.Timer2.Enabled = True
         Form2.Timer1.Enabled = True
     End Sub
 
@@ -292,6 +299,17 @@ CLOSEIT:
     End Sub
 
     Private Sub StatusStrip1_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles StatusStrip1.ItemClicked
+
+    End Sub
+
+    Private Sub ToolStripStatusLabel5_Click(sender As Object, e As EventArgs) Handles ToolStripStatusLabel5.Click
+
+    End Sub
+
+    Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
+
+
+
 
     End Sub
 End Class
