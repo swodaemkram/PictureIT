@@ -143,18 +143,31 @@ Public Class Form2
 
     Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
 
-        Dim label_tag(LINE_COUNT) As Label
-
+        Dim label_tag(LINE_COUNT * 2) As Label
+        Dim X_YLOCATION As String = ""
+        Dim Y_XLOCATION As String = ""
         Dim g As Integer = 0
+
         For g = 0 To LINE_COUNT - 1
 
-            label_tag(g) = New Label
-            label_tag(g).Name = "label" & g
-            label_tag(g).Text = "TEST" & g
-            label_tag(g).AutoSize = True
-            label_tag(g).Location = New Point(80 + g, 33 + g)
-            label_tag(g).BackColor = Color.LightGoldenrodYellow
-            PictureBox1.Controls.Add(label_tag(g))
+            X_YLOCATION = Form3.DataGridView1.Rows(g).Cells(1).Value ' Starting Point Link Location For Label
+            Y_XLOCATION = Form3.DataGridView1.Rows(g).Cells(2).Value ' Ending Point of Link Location For Label
+            Dim The_DATA As String() = X_YLOCATION.Split(".") ' Start of Link
+            Dim The_DATA2 As String() = Y_XLOCATION.Split(".") ' End of Link
+            label_tag(g) = New Label ' Start of Link
+            label_tag(LINE_COUNT / 2 + g) = New Label ' End of Link
+            label_tag(g).Name = "label" & g 'Start of Link
+            label_tag(LINE_COUNT / 2 + g).Name = "label" & LINE_COUNT / 2 + g 'End of Link
+            label_tag(g).Text = Form3.DataGridView1.Rows(g).Cells(3).Value 'Starting Point of Link IP For Label
+            label_tag(LINE_COUNT / 2 + g).Text = Form3.DataGridView1.Rows(g).Cells(4).Value 'End of Link
+            label_tag(g).AutoSize = True 'Start of Link
+            label_tag(LINE_COUNT / 2 + g).AutoSize = True 'ENd of link
+            label_tag(g).Location = New Point(The_DATA(0), The_DATA(1)) 'Start of Link
+            label_tag(LINE_COUNT / 2 + g).Location = New Point(The_DATA2(0), The_DATA2(1)) 'End of Link
+            label_tag(g).BackColor = Color.LightGoldenrodYellow 'Start Link
+            label_tag(LINE_COUNT / 2 + g).BackColor = Color.LightGoldenrodYellow 'End Link
+            PictureBox1.Controls.Add(label_tag(g)) 'Start Link
+            PictureBox1.Controls.Add(label_tag(LINE_COUNT / 2 + g)) 'End Link
 
         Next g
 
