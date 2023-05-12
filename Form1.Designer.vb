@@ -88,10 +88,11 @@ Partial Class Form1
         '
         'ToolStripStatusLabel4
         '
+        Me.ToolStripStatusLabel4.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.ToolStripStatusLabel4.ForeColor = System.Drawing.Color.Fuchsia
         Me.ToolStripStatusLabel4.Name = "ToolStripStatusLabel4"
-        Me.ToolStripStatusLabel4.Size = New System.Drawing.Size(119, 17)
-        Me.ToolStripStatusLabel4.Text = "ToolStripStatusLabel4"
+        Me.ToolStripStatusLabel4.Size = New System.Drawing.Size(99, 17)
+        Me.ToolStripStatusLabel4.Text = "NOT TESTING ...."
         '
         'ToolStripStatusLabel5
         '

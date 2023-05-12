@@ -142,6 +142,7 @@ Public Class Form2
     End Sub
 
     Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
+        Timer2.Enabled = False
 
         Dim label_tag(LINE_COUNT * 2) As Label
         Dim X_YLOCATION As String = ""
@@ -156,22 +157,44 @@ Public Class Form2
             Dim The_DATA2 As String() = Y_XLOCATION.Split(".") ' End of Link
             label_tag(g) = New Label ' Start of Link
             label_tag(LINE_COUNT / 2 + g) = New Label ' End of Link
-            label_tag(g).Name = "label" & g 'Start of Link
+            label_tag(g).Name = "label" & g 'Start of Link  
             label_tag(LINE_COUNT / 2 + g).Name = "label" & LINE_COUNT / 2 + g 'End of Link
-            label_tag(g).Text = Form3.DataGridView1.Rows(g).Cells(3).Value 'Starting Point of Link IP For Label
-            label_tag(LINE_COUNT / 2 + g).Text = Form3.DataGridView1.Rows(g).Cells(4).Value 'End of Link
+            '*************************************************************************************************************************
+
+            label_tag(g).Text = Form3.DataGridView1.Rows(g).Cells(3).Value              'Starting Point ********* LINK INFO **********
+
+
+            label_tag(LINE_COUNT / 2 + g).Text = Form3.DataGridView1.Rows(g).Cells(4).Value 'End of Link ********* LINK INFO *********
+
+            '*************************************************************************************************************************
             label_tag(g).AutoSize = True 'Start of Link
-            label_tag(LINE_COUNT / 2 + g).AutoSize = True 'ENd of link
+
+            label_tag(LINE_COUNT / 2 + g).AutoSize = True 'End of link
             label_tag(g).Location = New Point(The_DATA(0), The_DATA(1)) 'Start of Link
             label_tag(LINE_COUNT / 2 + g).Location = New Point(The_DATA2(0), The_DATA2(1)) 'End of Link
-            label_tag(g).BackColor = Color.LightGoldenrodYellow 'Start Link
-            label_tag(LINE_COUNT / 2 + g).BackColor = Color.LightGoldenrodYellow 'End Link
+
+
+            If Form3.DataGridView1.Rows(g).Cells(5).Value = 0 Then label_tag(g).BackColor = Color.Red 'Start Link
+            If Form3.DataGridView1.Rows(g).Cells(6).Value = 0 Then label_tag(LINE_COUNT / 2 + g).BackColor = Color.Red
+
+
+            Form1.ToolStripStatusLabel4.Text = Form3.DataGridView1.Rows(g).Cells(5).Value & " " & Form3.DataGridView1.Rows(g).Cells(6).Value & " " & g
+
+            If Form3.DataGridView1.Rows(g).Cells(5).Value > 0 Then label_tag(g).BackColor = Color.LightGoldenrodYellow : label_tag(LINE_COUNT / 2 + g).BackColor = Color.LightGoldenrodYellow           'Start Link
+
+            'MsgBox(Form3.DataGridView1.Rows(g).Cells(6).Value)
+            PictureBox1.Controls.Remove(label_tag(g)) 'Start Link
+            PictureBox1.Controls.Remove(label_tag(LINE_COUNT / 2 + g))
+
+
             PictureBox1.Controls.Add(label_tag(g)) 'Start Link
             PictureBox1.Controls.Add(label_tag(LINE_COUNT / 2 + g)) 'End Link
+            label_tag(g).BringToFront()
+            label_tag(LINE_COUNT / 2 + g).BringToFront()
 
         Next g
 
-        Timer2.Enabled = False
+        Timer2.Enabled = True
 
     End Sub
 End Class

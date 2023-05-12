@@ -132,7 +132,7 @@ CLOSEIT:
         Me.EditToolStripMenuItem.Enabled = True
         Me.OpenFileDialog1.Filter = "Picture I.T. File|*.pin"
 
-        Form2.Timer1.Enabled = False
+        'Form2.Timer1.Enabled = False
 
         Form3.DataGridView1.Rows.Clear()
         ' Form3.DataGridView1.Columns.Clear()
@@ -182,7 +182,6 @@ CLOSEIT:
 
             Me.StartTestingToolStripMenuItem.Enabled = True
 
-
         End If
         'Done Loading The Database *****************************************************************
         Form2.Timer2.Enabled = True
@@ -198,6 +197,7 @@ CLOSEIT:
         Form3.BackgroundWorker1.RunWorkerAsync()
         Me.StopTestingToolStripMenuItem.Enabled = True
         Me.StartTestingToolStripMenuItem.Enabled = False
+        Me.ToolStripStatusLabel4.Text = "Testing ...."
     End Sub
 
     Private Sub StopTestingToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles StopTestingToolStripMenuItem.Click
@@ -209,6 +209,7 @@ CLOSEIT:
         Form3.BackgroundWorker1.CancelAsync()
         Me.StopTestingToolStripMenuItem.Enabled = False
         Me.StartTestingToolStripMenuItem.Enabled = True
+        Me.ToolStripStatusLabel4.Text = "NOT TESTING ...."
     End Sub
 
     Private Sub ToolStripStatusLabel3_Click(sender As Object, e As EventArgs)
