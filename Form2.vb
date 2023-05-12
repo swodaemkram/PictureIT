@@ -15,19 +15,9 @@ Public Class Form2
 
     End Sub
 
-    Private Sub Form2_Paint(sender As Object, e As PaintEventArgs) Handles Me.Paint
-        ' Dim Surface As Graphics = CreateGraphics()
-        ' Dim penGreen As Pen = New Pen(Color.Green, 5)
-
-        ' Surface.DrawLine(penGreen, 466, 158, 591, 139)
-
-
-    End Sub
-
 
 
     Private Sub Form2_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles Me.MouseDoubleClick
-
 
         If EditMode = True Then
 
@@ -36,11 +26,9 @@ Public Class Form2
 
             Form3.DataGridView1.CurrentCell.Value = e.X & "." & e.Y
 
-
         End If
 
     End Sub
-
 
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -57,9 +45,6 @@ Public Class Form2
         Dim GColor As Integer = 0
         Dim BColor As Integer = 0
         Dim PingDelay As Integer = 0
-
-
-
 
         On Error Resume Next
 
@@ -88,22 +73,6 @@ Public Class Form2
 
             Surface.DrawLine(myPen, Convert.ToInt32(FIRST_POINT(0)), Convert.ToInt32(FIRST_POINT(1)), Convert.ToInt32(SECOND_POINT(0)), Convert.ToInt32(SECOND_POINT(1)))
 
-
-
-
-
-
-
-
-
-
-            'myPen.Dispose()
-            'formGraphics.Dispose()
-
-            ' End of Draw Lines
-
-
-
         Next t
 
         t = 0
@@ -111,38 +80,29 @@ Public Class Form2
 
     End Sub
 
-    Private Sub Form2_MouseMove(sender As Object, e As MouseEventArgs) Handles Me.MouseMove
-
-
-
-    End Sub
-
-
     Private Sub PictureBox1_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles PictureBox1.MouseDoubleClick
         If EditMode = True Then
-
 
             Dim x As Integer = Form3.DataGridView1.CurrentCellAddress.X
             'MsgBox(MousePosition().ToString())
             Form3.DataGridView1.CurrentCell.Value = e.X & "." & e.Y 'Make Changes Here
 
-
         End If
     End Sub
 
     Private Sub PictureBox1_MouseMove(sender As Object, e As MouseEventArgs) Handles PictureBox1.MouseMove
+
         Form1.ToolStripStatusLabel5.Text = e.X & " , " & e.Y
 
-
-
     End Sub
 
-    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
-
-    End Sub
 
     Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
+
+
+
         Timer2.Enabled = False
+
 
         Dim label_tag(LINE_COUNT * 2) As Label
         Dim X_YLOCATION As String = ""
@@ -173,10 +133,8 @@ Public Class Form2
             label_tag(g).Location = New Point(The_DATA(0), The_DATA(1)) 'Start of Link
             label_tag(LINE_COUNT / 2 + g).Location = New Point(The_DATA2(0), The_DATA2(1)) 'End of Link
 
-
             If Form3.DataGridView1.Rows(g).Cells(5).Value = 0 Then label_tag(g).BackColor = Color.Red 'Start Link
             If Form3.DataGridView1.Rows(g).Cells(6).Value = 0 Then label_tag(LINE_COUNT / 2 + g).BackColor = Color.Red
-
 
             Form1.ToolStripStatusLabel4.Text = Form3.DataGridView1.Rows(g).Cells(5).Value & " " & Form3.DataGridView1.Rows(g).Cells(6).Value & " " & g
 
@@ -185,7 +143,6 @@ Public Class Form2
             'MsgBox(Form3.DataGridView1.Rows(g).Cells(6).Value)
             PictureBox1.Controls.Remove(label_tag(g)) 'Start Link
             PictureBox1.Controls.Remove(label_tag(LINE_COUNT / 2 + g))
-
 
             PictureBox1.Controls.Add(label_tag(g)) 'Start Link
             PictureBox1.Controls.Add(label_tag(LINE_COUNT / 2 + g)) 'End Link
@@ -197,4 +154,7 @@ Public Class Form2
         Timer2.Enabled = True
 
     End Sub
+
+
+
 End Class

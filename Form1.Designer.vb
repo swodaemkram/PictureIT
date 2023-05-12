@@ -211,7 +211,7 @@ Partial Class Form1
         Me.MainMenuStrip = Me.MenuStrip1
         Me.MinimizeBox = False
         Me.Name = "Form1"
-        Me.Text = "Picture I.T. Network Visualizer By Mark Meadows (c) 2023 Ver 0.1.1"
+        Me.Text = "Picture I.T. Network Visualizer By Mark Meadows (c) 2023 Ver 0.9.1"
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         Me.MenuStrip1.ResumeLayout(False)

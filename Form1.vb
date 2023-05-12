@@ -7,6 +7,7 @@ Imports System.Threading
 Imports System.Windows.Forms.Design.AxImporter
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Imports System.Runtime.InteropServices
+Imports System.ComponentModel
 
 Public Module Module1
 
@@ -194,7 +195,9 @@ CLOSEIT:
         Me.CeateNewNetworkToolStripMenuItem.Enabled = False
         Me.LoadNetworkToolStripMenuItem.Enabled = False
         Me.ExitToolStripMenuItem.Enabled = False
+
         Form3.BackgroundWorker1.RunWorkerAsync()
+
         Me.StopTestingToolStripMenuItem.Enabled = True
         Me.StartTestingToolStripMenuItem.Enabled = False
         Me.ToolStripStatusLabel4.Text = "Testing ...."
@@ -206,7 +209,9 @@ CLOSEIT:
         Me.CeateNewNetworkToolStripMenuItem.Enabled = True
         Me.LoadNetworkToolStripMenuItem.Enabled = True
         Me.ExitToolStripMenuItem.Enabled = True
+
         Form3.BackgroundWorker1.CancelAsync()
+
         Me.StopTestingToolStripMenuItem.Enabled = False
         Me.StartTestingToolStripMenuItem.Enabled = True
         Me.ToolStripStatusLabel4.Text = "NOT TESTING ...."
