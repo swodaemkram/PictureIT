@@ -99,10 +99,7 @@ Public Class Form2
 
     Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
 
-
-
         Timer2.Enabled = False
-
 
         Dim label_tag(LINE_COUNT * 2) As Label
         Dim X_YLOCATION As String = ""
@@ -110,25 +107,58 @@ Public Class Form2
         Dim g As Integer = 0
 
         For g = 0 To LINE_COUNT - 1
+            X_YLOCATION = Form3.DataGridView1.Rows(g).Cells(1).Value          ' Starting Point Link Location For Label
+            Y_XLOCATION = Form3.DataGridView1.Rows(g).Cells(2).Value          ' Ending Point of Link Location For Label
+            Dim The_DATA As String() = X_YLOCATION.Split(".")                 ' Start of Link
+            Dim The_DATA2 As String() = Y_XLOCATION.Split(".")                ' End of Link
 
-            X_YLOCATION = Form3.DataGridView1.Rows(g).Cells(1).Value ' Starting Point Link Location For Label
-            Y_XLOCATION = Form3.DataGridView1.Rows(g).Cells(2).Value ' Ending Point of Link Location For Label
-            Dim The_DATA As String() = X_YLOCATION.Split(".") ' Start of Link
-            Dim The_DATA2 As String() = Y_XLOCATION.Split(".") ' End of Link
-            label_tag(g) = New Label ' Start of Link
-            label_tag(LINE_COUNT / 2 + g) = New Label ' End of Link
-            label_tag(g).Name = "label" & g 'Start of Link  
-            label_tag(LINE_COUNT / 2 + g).Name = "label" & LINE_COUNT / 2 + g 'End of Link
+
+            '**************************************************If Only One Link Do This**********************************************************
+            If LINE_COUNT < 4 Then
+
+                label_tag(0) = New Label                                      ' Start of Link
+                label_tag(1) = New Label                                      ' End of Link
+                label_tag(0).Name = "label0"                                  ' Start of Link  
+                label_tag(1).Name = "label1"                                  ' End of Link
+                label_tag(0).Text = Form3.DataGridView1.Rows(0).Cells(3).Value
+                label_tag(1).Text = Form3.DataGridView1.Rows(0).Cells(4).Value
+                label_tag(0).AutoSize = True                                  'Start of Link
+                label_tag(1).AutoSize = True                                  'End of link
+                label_tag(0).Location = New Point(The_DATA(0), The_DATA(1))   'Start of Link
+                label_tag(1).Location = New Point(The_DATA2(0), The_DATA2(1)) 'End of Link
+                If Form3.DataGridView1.Rows(0).Cells(5).Value = 0 Then label_tag(0).BackColor = Color.Red 'Start Link
+                If Form3.DataGridView1.Rows(0).Cells(6).Value = 0 Then label_tag(1).BackColor = Color.Red
+                If Form3.DataGridView1.Rows(0).Cells(5).Value > 0 Then label_tag(0).BackColor = Color.LightGoldenrodYellow : label_tag(1).BackColor = Color.LightGoldenrodYellow           'Start Link
+                PictureBox1.Controls.Remove(label_tag(0)) 'Start Link
+                PictureBox1.Controls.Remove(label_tag(1))
+
+                On Error Resume Next
+
+                PictureBox1.Controls.Add(label_tag(0)) 'Start Link
+                PictureBox1.Controls.Add(label_tag(1)) 'End Link
+                label_tag(0).BringToFront()
+                label_tag(1).BringToFront()
+                Timer2.Enabled = True
+                Exit Sub
+
+            End If
+            '*********************************************************End only one link***********************************************************
+            '**************************************************************************************************************************
+
+
+            label_tag(g) = New Label                                          ' Start of Link
+            label_tag(LINE_COUNT / 2 + g) = New Label                         ' End of Link
+            label_tag(g).Name = "label" & g                                   ' Start of Link  
+            label_tag(LINE_COUNT / 2 + g).Name = "label" & LINE_COUNT / 2 + g ' End of Link
             '*************************************************************************************************************************
 
-            label_tag(g).Text = Form3.DataGridView1.Rows(g).Cells(3).Value              'Starting Point ********* LINK INFO **********
+            label_tag(g).Text = Form3.DataGridView1.Rows(g).Cells(3).Value                  'Starting Point ******* LINK INFO ********
 
 
             label_tag(LINE_COUNT / 2 + g).Text = Form3.DataGridView1.Rows(g).Cells(4).Value 'End of Link ********* LINK INFO *********
 
             '*************************************************************************************************************************
             label_tag(g).AutoSize = True 'Start of Link
-
             label_tag(LINE_COUNT / 2 + g).AutoSize = True 'End of link
             label_tag(g).Location = New Point(The_DATA(0), The_DATA(1)) 'Start of Link
             label_tag(LINE_COUNT / 2 + g).Location = New Point(The_DATA2(0), The_DATA2(1)) 'End of Link
@@ -143,6 +173,8 @@ Public Class Form2
             'MsgBox(Form3.DataGridView1.Rows(g).Cells(6).Value)
             PictureBox1.Controls.Remove(label_tag(g)) 'Start Link
             PictureBox1.Controls.Remove(label_tag(LINE_COUNT / 2 + g))
+
+            On Error Resume Next
 
             PictureBox1.Controls.Add(label_tag(g)) 'Start Link
             PictureBox1.Controls.Add(label_tag(LINE_COUNT / 2 + g)) 'End Link

@@ -132,7 +132,7 @@ CLOSEIT:
     Private Sub LoadNetworkToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LoadNetworkToolStripMenuItem.Click
         Me.EditToolStripMenuItem.Enabled = True
         Me.OpenFileDialog1.Filter = "Picture I.T. File|*.pin"
-
+        Me.TraceRouteToolStripMenuItem.Enabled = False : Form4.Hide()
         'Form2.Timer1.Enabled = False
 
         Form3.DataGridView1.Rows.Clear()
@@ -147,7 +147,7 @@ CLOSEIT:
         Dim TextLine As String = ""
         If System.IO.File.Exists(FILE_NAME) = True Then
             Dim objReader As New System.IO.StreamReader(FILE_NAME)
-
+            ToolStripStatusLabel6.Text = FILE_NAME
             TextLine = objReader.ReadLine()
             NETWORK_MAP = TextLine
             'Form2.BackgroundImage = New System.Drawing.Bitmap(TextLine)
@@ -312,10 +312,7 @@ CLOSEIT:
 
     End Sub
 
-    Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
-
-
-
+    Private Sub ToolStripStatusLabel6_Click(sender As Object, e As EventArgs) Handles ToolStripStatusLabel6.Click
 
     End Sub
 End Class

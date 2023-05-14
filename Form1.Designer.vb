@@ -46,14 +46,14 @@ Partial Class Form1
         Me.ExportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
-        Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
+        Me.ToolStripStatusLabel6 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'StatusStrip1
         '
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel2, Me.ToolStripStatusLabel3, Me.ToolStripStatusLabel4, Me.ToolStripStatusLabel5})
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel2, Me.ToolStripStatusLabel3, Me.ToolStripStatusLabel4, Me.ToolStripStatusLabel5, Me.ToolStripStatusLabel6})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 428)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Size = New System.Drawing.Size(800, 22)
@@ -179,8 +179,8 @@ Partial Class Form1
         '
         Me.TraceRouteToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TraceToolStripMenuItem, Me.ExportToolStripMenuItem})
         Me.TraceRouteToolStripMenuItem.Name = "TraceRouteToolStripMenuItem"
-        Me.TraceRouteToolStripMenuItem.Size = New System.Drawing.Size(77, 20)
-        Me.TraceRouteToolStripMenuItem.Text = "TraceRoute"
+        Me.TraceRouteToolStripMenuItem.Size = New System.Drawing.Size(105, 20)
+        Me.TraceRouteToolStripMenuItem.Text = "Trace Route Tool"
         '
         'TraceToolStripMenuItem
         '
@@ -194,9 +194,13 @@ Partial Class Form1
         Me.ExportToolStripMenuItem.Size = New System.Drawing.Size(110, 22)
         Me.ExportToolStripMenuItem.Text = "Import"
         '
-        'Timer2
+        'ToolStripStatusLabel6
         '
-        Me.Timer2.Interval = 500
+        Me.ToolStripStatusLabel6.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.ToolStripStatusLabel6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.ToolStripStatusLabel6.Name = "ToolStripStatusLabel6"
+        Me.ToolStripStatusLabel6.Size = New System.Drawing.Size(161, 17)
+        Me.ToolStripStatusLabel6.Text = "Currently Loaded Network :"
         '
         'Form1
         '
@@ -243,5 +247,5 @@ Partial Class Form1
     Friend WithEvents ToolStripStatusLabel3 As ToolStripStatusLabel
     Friend WithEvents ToolStripStatusLabel4 As ToolStripStatusLabel
     Friend WithEvents ToolStripStatusLabel5 As ToolStripStatusLabel
-    Friend WithEvents Timer2 As Timer
+    Friend WithEvents ToolStripStatusLabel6 As ToolStripStatusLabel
 End Class
