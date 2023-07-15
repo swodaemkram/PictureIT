@@ -52,9 +52,6 @@ Public Class Form1
         Form6.WindowState = 0
         Form6.Show()
 
-
-
-
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -62,10 +59,6 @@ Public Class Form1
         ' Me.ToolStripStatusLabel2.Text = String.Format("Mouse Position X:{0}, Y:{1}", Control.MousePosition.X, Control.MousePosition.Y - 50)
         Me.ToolStripStatusLabel2.Text = String.Format("Mouse Position X:{0}, Y:{1}", Control.MousePosition.X, Control.MousePosition.Y)
         Me.ToolStripStatusLabel1.Text = DateString + " " + TimeString
-
-
-
-
 
     End Sub
 
@@ -102,6 +95,7 @@ CLOSEIT:
         End Using
 
         EditMode = False
+        Me.ToolStripStatusLabel8.Text = EditMode
         Form3.DataGridView1.ReadOnly = True
         SaveToolStripMenuItem.Enabled = False
         If ADD_NEW_RECORD = True Then LINE_COUNT = LINE_COUNT + 1 : ADD_NEW_RECORD = False
@@ -115,6 +109,7 @@ CLOSEIT:
     Private Sub EditToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditToolStripMenuItem.Click
         ADD_NEW_RECORD = True
         EditMode = True
+        Me.ToolStripStatusLabel8.Text = EditMode
         Form3.DataGridView1.ReadOnly = False
         ' Form2.Timer1.Enabled = False
         SaveToolStripMenuItem.Enabled = True
@@ -217,13 +212,12 @@ CLOSEIT:
         Me.ToolStripStatusLabel4.Text = "NOT TESTING ...."
     End Sub
 
-    Private Sub ToolStripStatusLabel3_Click(sender As Object, e As EventArgs)
-
-    End Sub
 
     Private Sub CeateNewNetworkToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CeateNewNetworkToolStripMenuItem.Click
 
+        Me.TraceToolStripMenuItem.Enabled = True : Form4.Show()
         EditMode = True
+        Me.ToolStripStatusLabel8.Text = EditMode
         Form2.Timer1.Enabled = True
         Form3.DataGridView1.Rows.Clear()
         Me.SaveToolStripMenuItem.Enabled = True
@@ -233,7 +227,6 @@ CLOSEIT:
         'Form2.BackgroundImage = New System.Drawing.Bitmap(NETWORK_MAP)
 
         Form2.PictureBox1.Image = New System.Drawing.Bitmap(NETWORK_MAP)
-
 
         Form3.DataGridView1.ReadOnly = False
 
@@ -294,23 +287,6 @@ CLOSEIT:
 
     End Sub
 
-    Private Sub MACToolStripMenuItem_Click(sender As Object, e As EventArgs)
-
-
-
-    End Sub
-
-    Private Sub ToolStripStatusLabel4_Click(sender As Object, e As EventArgs) Handles ToolStripStatusLabel4.Click
-
-    End Sub
-
-    Private Sub StatusStrip1_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles StatusStrip1.ItemClicked
-
-    End Sub
-
-    Private Sub ToolStripStatusLabel5_Click(sender As Object, e As EventArgs) Handles ToolStripStatusLabel5.Click
-
-    End Sub
 
     Private Sub ToolStripStatusLabel6_Click(sender As Object, e As EventArgs) Handles ToolStripStatusLabel6.Click
 

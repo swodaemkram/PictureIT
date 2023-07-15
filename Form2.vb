@@ -21,10 +21,10 @@ Public Class Form2
 
         If EditMode = True Then
 
-
             Dim x As Integer = Form3.DataGridView1.CurrentCellAddress.X
-
             Form3.DataGridView1.CurrentCell.Value = e.X & "." & e.Y
+            MsgBox(Form3.DataGridView1.CurrentCell)
+
 
         End If
 
@@ -163,8 +163,13 @@ Public Class Form2
             label_tag(g).Location = New Point(The_DATA(0), The_DATA(1)) 'Start of Link
             label_tag(LINE_COUNT / 2 + g).Location = New Point(The_DATA2(0), The_DATA2(1)) 'End of Link
 
-            If Form3.DataGridView1.Rows(g).Cells(5).Value = 0 Then label_tag(g).BackColor = Color.Red 'Start Link
-            If Form3.DataGridView1.Rows(g).Cells(6).Value = 0 Then label_tag(LINE_COUNT / 2 + g).BackColor = Color.Red
+            'If Form3.DataGridView1.Rows(g).Cells(5).Value = 0 Then label_tag(g).BackColor = Color.Red 'Start Link
+            'If Form3.DataGridView1.Rows(g).Cells(6).Value = 0 Then label_tag(LINE_COUNT / 2 + g).BackColor = Color.Red
+
+            If Form3.DataGridView1.Rows(g).Cells(5).Value = 0 Then label_tag(g).BackColor = Color.LightGoldenrodYellow 'Start Link
+            If Form3.DataGridView1.Rows(g).Cells(6).Value = 0 Then label_tag(LINE_COUNT / 2 + g).BackColor = Color.LightGoldenrodYellow
+
+
 
             Form1.ToolStripStatusLabel4.Text = Form3.DataGridView1.Rows(g).Cells(5).Value & " " & Form3.DataGridView1.Rows(g).Cells(6).Value & " " & g
 
@@ -183,10 +188,11 @@ Public Class Form2
 
         Next g
 
-        Timer2.Enabled = True
+        Timer2.Enabled = False
 
     End Sub
 
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
 
-
+    End Sub
 End Class

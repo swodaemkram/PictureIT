@@ -5,9 +5,6 @@ Public Class Form3
         Me.Location = New Point(200, 580)
     End Sub
 
-
-
-
     Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
 
 THEVERYTOP:
